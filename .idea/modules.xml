@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/nifi-ParseCSV-bundle.iml" filepath="$PROJECT_DIR$/nifi-ParseCSV-bundle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nifi-ParseCSV-nar/nifi-ParseCSV-nar.iml" filepath="$PROJECT_DIR$/nifi-ParseCSV-nar/nifi-ParseCSV-nar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nifi-ParseCSV-processors/nifi-ParseCSV-processors.iml" filepath="$PROJECT_DIR$/nifi-ParseCSV-processors/nifi-ParseCSV-processors.iml" />
+    </modules>
+  </component>
+</project>
