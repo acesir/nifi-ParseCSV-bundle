@@ -3,11 +3,12 @@
     <output-path>$PROJECT_DIR$/out/artifacts/nifi_ParseCSV_bundle_jar</output-path>
     <root id="archive" name="nifi-ParseCSV-bundle.jar">
       <element id="module-output" name="nifi-ParseCSV-processors" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/commons/commons-csv/1.2/commons-csv-1.2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.10/commons-codec-1.10.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/nifi/nifi-security-utils/0.4.1/nifi-security-utils-0.4.1.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/nifi/nifi-processor-utils/0.4.1/nifi-processor-utils-0.4.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/nifi/nifi-utils/0.4.1/nifi-utils-0.4.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/nifi/nifi-processor-utils/0.4.1/nifi-processor-utils-0.4.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/commons/commons-csv/1.2/commons-csv-1.2.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

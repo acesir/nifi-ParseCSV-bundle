@@ -41,14 +41,14 @@ public class ParseCSVTest {
     public void testProcessor() {
         try {
             final TestRunner runner = TestRunners.newTestRunner(new ParseCSV());
-            runner.setProperty(ParseCSV.DELIMITER, "|");
+            runner.setProperty(ParseCSV.DELIMITER, ",");
             runner.setProperty(ParseCSV.WITH_HEADER, "True");
             runner.setProperty(ParseCSV.FORMAT, "DEFAULT");
             //runner.setProperty(ParseCSV.CUSTOM_HEADER, "column4,column5,column6");
-            runner.setProperty(ParseCSV.COLUMN_MASK, "column2");
-            runner.setProperty(ParseCSV.COLUMN_TOKENIZE, "column2");
-            //runner.setProperty(ParseCSV.COLUMN_ENCRYPT, "column3");
-            runner.enqueue(Paths.get("/Users/acesir/Desktop/files/test_csv2"));
+            runner.setProperty(ParseCSV.COLUMN_MASK, "RNC");
+            //runner.setProperty(ParseCSV.COLUMN_TOKENIZE, "RNC");
+            runner.setProperty(ParseCSV.COLUMN_ENCRYPT, "SITE_ID");
+            runner.enqueue(Paths.get("/Users/acesir/Desktop/files/scotia/NiFi/DB_data.csv"));
             runner.run();
 
             //runner.assertAllFlowFilesTransferred(ParseCSV.RELATIONSHIP_SUCCESS);
@@ -58,9 +58,9 @@ public class ParseCSVTest {
             runner.assertTransferCount(ParseCSV.RELATIONSHIP_TOKENIZED, 1);
 
             final MockFlowFile out = runner.getFlowFilesForRelationship(ParseCSV.RELATIONSHIP_SUCCESS).get(0);
-            final MockFlowFile out2 = runner.getFlowFilesForRelationship(ParseCSV.RELATIONSHIP_TOKENIZED).get(0);
-            //out.assertContentEquals(new String(Files.readAllBytes(Paths.get("/Users/acesir/Desktop/files/test_csv2"))));
-            out2.assertContentEquals(new String(Files.readAllBytes(Paths.get("/Users/acesir/Desktop/files/test_csv2"))));
+            //final MockFlowFile out2 = runner.getFlowFilesForRelationship(ParseCSV.RELATIONSHIP_TOKENIZED).get(0);
+            out.assertContentEquals(new String(Files.readAllBytes(Paths.get("/Users/acesir/Desktop/files/scotia/NiFi/DB_data.csv"))));
+            //out2.assertContentEquals(new String(Files.readAllBytes(Paths.get("/Users/acesir/Desktop/files/scotia/NiFi/DB_data.csv"))));
         }
         catch (Exception ex) {
             System.out.println(ex);

@@ -15,13 +15,11 @@
  * limitations under the License.
  */
 package org.apache.nifi.processors.ParseCSV;
-
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.nifi.components.AllowableValue;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.flowfile.FlowFile;
@@ -35,14 +33,10 @@ import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.processor.exception.ProcessException;
-import org.apache.nifi.processor.io.InputStreamCallback;
 import org.apache.nifi.processor.io.OutputStreamCallback;
 import org.apache.nifi.processor.io.StreamCallback;
 import org.apache.nifi.processor.util.StandardValidators;
-import org.omg.CORBA.ObjectHolder;
-
 import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
 import java.nio.charset.Charset;
@@ -282,7 +276,7 @@ public class ParseCSV extends AbstractProcessor {
                             }
                             else if (columnEncryptList.contains(headerArray[i])) {
                                 // encrypt
-                                maskValueHolder.add(new String(Encrypt(record.get(i), encryptionKey), "UTF-8"));
+                                maskValueHolder.add(new String(Encrypt( record.get(i), encryptionKey), "UTF-8"));
                             }
                             else {
                                 // no mask
@@ -314,12 +308,11 @@ public class ParseCSV extends AbstractProcessor {
         try {
             // Create key and cipher
             Key aesKey = new SecretKeySpec(key.getBytes(), "AES");
-            Cipher cipher = Cipher.getInstance("AES");
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 
             // encrypt the text
             cipher.init(Cipher.ENCRYPT_MODE, aesKey);
-            returnEncrypted = cipher.doFinal(data.getBytes());
-            System.err.println(new String(returnEncrypted));
+            returnEncrypted = cipher.doFinal(Base64.encodeBase64(data.getBytes()));
 
             // decrypt the text
             //cipher.init(Cipher.DECRYPT_MODE, aesKey);
@@ -329,7 +322,7 @@ public class ParseCSV extends AbstractProcessor {
         catch(Exception e) {
             e.printStackTrace();
         }
-        return returnEncrypted;
+        return Base64.encodeBase64(returnEncrypted);
     }
 
     private CSVFormat buildFormat(String format, char delimiter, Boolean with_header, String custom_header) {
@@ -361,7 +354,7 @@ public class ParseCSV extends AbstractProcessor {
         final String vowel = "aeiouy";
         final String digit = "0123456789";
 
-        DateFormat dateFormat = new SimpleDateFormat("HHmmssSSS");
+        DateFormat dateFormat = new SimpleDateFormat("SSS");
         Date date = new Date();
         Random r = new Random(Integer.parseInt(dateFormat.format(date)));
 
