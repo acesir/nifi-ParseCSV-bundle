@@ -46,13 +46,21 @@ public class ParseCSVTest {
             runner.setProperty(ParseCSV.FORMAT, "DEFAULT");
             //runner.setProperty(ParseCSV.CUSTOM_HEADER, "column4,column5,column6");
             runner.setProperty(ParseCSV.COLUMN_MASK, "column2");
+            runner.setProperty(ParseCSV.COLUMN_TOKENIZE, "column2");
+            //runner.setProperty(ParseCSV.COLUMN_ENCRYPT, "column3");
             runner.enqueue(Paths.get("/Users/acesir/Desktop/files/test_csv2"));
             runner.run();
 
-            runner.assertAllFlowFilesTransferred(ParseCSV.RELATIONSHIP_SUCCESS);
+            //runner.assertAllFlowFilesTransferred(ParseCSV.RELATIONSHIP_SUCCESS);
+            //runner.assertAllFlowFilesTransferred(ParseCSV.RELATIONSHIP_TOKENIZED);
+
+            runner.assertTransferCount(ParseCSV.RELATIONSHIP_SUCCESS, 1);
+            runner.assertTransferCount(ParseCSV.RELATIONSHIP_TOKENIZED, 1);
 
             final MockFlowFile out = runner.getFlowFilesForRelationship(ParseCSV.RELATIONSHIP_SUCCESS).get(0);
-            out.assertContentEquals(new String(Files.readAllBytes(Paths.get("/Users/acesir/Desktop/files/test_csv2"))));
+            final MockFlowFile out2 = runner.getFlowFilesForRelationship(ParseCSV.RELATIONSHIP_TOKENIZED).get(0);
+            //out.assertContentEquals(new String(Files.readAllBytes(Paths.get("/Users/acesir/Desktop/files/test_csv2"))));
+            out2.assertContentEquals(new String(Files.readAllBytes(Paths.get("/Users/acesir/Desktop/files/test_csv2"))));
         }
         catch (Exception ex) {
             System.out.println(ex);

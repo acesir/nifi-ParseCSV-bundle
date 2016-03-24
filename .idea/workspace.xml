@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fe248136-b42a-4cf3-ba1c-e3548863e013" name="Default" comment="" />
+    <list default="true" id="fe248136-b42a-4cf3-ba1c-e3548863e013" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_nifi_nifi_ParseCSV_processors_0_4_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nifi-ParseCSV-processors/target/classes/org/apache/nifi/processors/ParseCSV/ParseCSV$1.class" afterPath="$PROJECT_DIR$/nifi-ParseCSV-processors/target/classes/org/apache/nifi/processors/ParseCSV/ParseCSV$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nifi-ParseCSV-processors/target/classes/org/apache/nifi/processors/ParseCSV/ParseCSV.class" afterPath="$PROJECT_DIR$/nifi-ParseCSV-processors/target/classes/org/apache/nifi/processors/ParseCSV/ParseCSV.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nifi-ParseCSV-processors/target/test-classes/org/apache/nifi/processors/ParseCSV/ParseCSVTest.class" afterPath="$PROJECT_DIR$/nifi-ParseCSV-processors/target/test-classes/org/apache/nifi/processors/ParseCSV/ParseCSVTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/nifi_ParseCSV_bundle_jar/nifi-ParseCSV-bundle.jar" afterPath="$PROJECT_DIR$/out/artifacts/nifi_ParseCSV_bundle_jar/nifi-ParseCSV-bundle.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nifi-ParseCSV-processors/nifi-ParseCSV-processors.iml" afterPath="$PROJECT_DIR$/nifi-ParseCSV-processors/nifi-ParseCSV-processors.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nifi-ParseCSV-processors/pom.xml" afterPath="$PROJECT_DIR$/nifi-ParseCSV-processors/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nifi-ParseCSV-processors/src/main/java/org/apache/nifi/processors/ParseCSV/ParseCSV.java" afterPath="$PROJECT_DIR$/nifi-ParseCSV-processors/src/main/java/org/apache/nifi/processors/ParseCSV/ParseCSV.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nifi-ParseCSV-processors/src/test/java/org/apache/nifi/processors/ParseCSV/ParseCSVTest.java" afterPath="$PROJECT_DIR$/nifi-ParseCSV-processors/src/test/java/org/apache/nifi/processors/ParseCSV/ParseCSVTest.java" />
+    </list>
     <ignored path="nifi-ParseCSV-bundle.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/nifi-ParseCSV-processors/target/" />
@@ -27,12 +39,13 @@
       <file leaf-file-name="ParseCSV.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/main/java/org/apache/nifi/processors/ParseCSV/ParseCSV.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.70552146">
-              <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+            <state vertical-scroll-proportion="-0.23901099">
+              <caret line="274" column="36" selection-start-line="274" selection-start-column="36" selection-end-line="274" selection-end-column="36" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#7858#10285#0" expanded="true" />
-                <element signature="e#10284#10285#0" expanded="true" />
+                <element signature="e#9579#14231#0" expanded="true" />
+                <element signature="e#12818#13173#0" expanded="true" />
+                <element signature="e#13172#13173#0" expanded="true" />
+                <element signature="e#14230#14231#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,13 +55,16 @@
         <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/test/java/org/apache/nifi/processors/ParseCSV/ParseCSVTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="58" selection-start-line="44" selection-start-column="58" selection-end-line="44" selection-end-column="58" />
+              <caret line="48" column="68" selection-start-line="48" selection-start-column="68" selection-end-line="48" selection-end-column="68" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -59,9 +75,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/nifi-ParseCSV-bundle.iml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/nifi-ParseCSV-processors/pom.xml" />
-        <option value="$PROJECT_DIR$/nifi-ParseCSV-processors/src/main/java/org/apache/nifi/processors/ParseCSV/ParseCSV.java" />
         <option value="$PROJECT_DIR$/nifi-ParseCSV-processors/src/test/java/org/apache/nifi/processors/ParseCSV/ParseCSVTest.java" />
+        <option value="$PROJECT_DIR$/nifi-ParseCSV-processors/src/main/java/org/apache/nifi/processors/ParseCSV/ParseCSV.java" />
       </list>
     </option>
   </component>
@@ -80,7 +97,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="827" />
+    <option name="height" value="825" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -107,9 +124,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -138,7 +152,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="artifacts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nifi-ParseCSV-bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nifi-ParseCSV-bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="nifi-ParseCSV-processors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nifi-ParseCSV-bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nifi-ParseCSV-bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nifi-ParseCSV-processors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -226,6 +276,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -235,8 +288,8 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="options.lastSelected" value="preferences.sourceCode" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -612,57 +665,57 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ParseCSVTest_testProcessor - 2016.03.12 at 17h 00m 09s.xml">
+    <history-entry file="ParseCSVTest_testProcessor - 2016.03.23 at 20h 17m 57s.xml">
       <configuration name="ParseCSVTest.testProcessor" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParseCSVTest_testProcessor - 2016.03.12 at 17h 00m 44s.xml">
+    <history-entry file="ParseCSVTest_testProcessor - 2016.03.23 at 20h 18m 23s.xml">
       <configuration name="ParseCSVTest.testProcessor" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParseCSVTest_testProcessor - 2016.03.12 at 17h 00m 58s.xml">
+    <history-entry file="ParseCSVTest_testProcessor - 2016.03.23 at 20h 28m 12s.xml">
       <configuration name="ParseCSVTest.testProcessor" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParseCSVTest_testProcessor - 2016.03.12 at 17h 01m 45s.xml">
+    <history-entry file="ParseCSVTest_testProcessor - 2016.03.23 at 20h 28m 51s.xml">
       <configuration name="ParseCSVTest.testProcessor" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParseCSVTest_testProcessor - 2016.03.12 at 17h 02m 28s.xml">
+    <history-entry file="ParseCSVTest_testProcessor - 2016.03.23 at 20h 31m 14s.xml">
       <configuration name="ParseCSVTest.testProcessor" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParseCSVTest_testProcessor - 2016.03.12 at 17h 03m 37s.xml">
+    <history-entry file="ParseCSVTest_testProcessor - 2016.03.23 at 20h 44m 46s.xml">
       <configuration name="ParseCSVTest.testProcessor" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParseCSVTest_testProcessor - 2016.03.12 at 17h 03m 54s.xml">
+    <history-entry file="ParseCSVTest_testProcessor - 2016.03.23 at 20h 54m 45s.xml">
       <configuration name="ParseCSVTest.testProcessor" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParseCSVTest_testProcessor - 2016.03.12 at 17h 09m 59s.xml">
+    <history-entry file="ParseCSVTest_testProcessor - 2016.03.23 at 20h 54m 58s.xml">
       <configuration name="ParseCSVTest.testProcessor" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParseCSVTest_testProcessor - 2016.03.12 at 17h 22m 21s.xml">
+    <history-entry file="ParseCSVTest_testProcessor - 2016.03.23 at 21h 00m 58s.xml">
       <configuration name="ParseCSVTest.testProcessor" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParseCSVTest_testProcessor - 2016.03.12 at 17h 22m 45s.xml">
+    <history-entry file="ParseCSVTest_testProcessor - 2016.03.23 at 21h 04m 15s.xml">
       <configuration name="ParseCSVTest.testProcessor" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="827" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="825" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32849604" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22354497" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2821192" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2823219" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25396827" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26180556" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23194444" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30870712" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30860928" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -689,15 +742,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/main/java/org/apache/nifi/processors/ParseCSV/ParseCSV.java</url>
-          <line>185</line>
-          <properties />
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="42" />
+      <option name="time" value="45" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
@@ -715,9 +760,149 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7858#10285#0" expanded="true" />
-            <element signature="e#10284#10285#0" expanded="true" />
+            <element signature="e#9579#14231#0" expanded="true" />
+            <element signature="e#12818#13173#0" expanded="true" />
+            <element signature="e#13172#13173#0" expanded="true" />
+            <element signature="e#14230#14231#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/test/java/org/apache/nifi/processors/ParseCSV/ParseCSVTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="75" selection-start-line="56" selection-start-column="75" selection-end-line="56" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/main/java/org/apache/nifi/processors/ParseCSV/ParseCSV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#9579#14231#0" expanded="true" />
+            <element signature="e#12818#13173#0" expanded="true" />
+            <element signature="e#13172#13173#0" expanded="true" />
+            <element signature="e#14230#14231#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/test/java/org/apache/nifi/processors/ParseCSV/ParseCSVTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="67" selection-start-line="48" selection-start-column="67" selection-end-line="48" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/main/java/org/apache/nifi/processors/ParseCSV/ParseCSV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#9579#14231#0" expanded="true" />
+            <element signature="e#12818#13173#0" expanded="true" />
+            <element signature="e#13172#13173#0" expanded="true" />
+            <element signature="e#14230#14231#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/test/java/org/apache/nifi/processors/ParseCSV/ParseCSVTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="67" selection-start-line="48" selection-start-column="67" selection-end-line="48" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/main/java/org/apache/nifi/processors/ParseCSV/ParseCSV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#9579#14231#0" expanded="true" />
+            <element signature="e#12818#13173#0" expanded="true" />
+            <element signature="e#13172#13173#0" expanded="true" />
+            <element signature="e#14230#14231#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/test/java/org/apache/nifi/processors/ParseCSV/ParseCSVTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="25" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/main/java/org/apache/nifi/processors/ParseCSV/ParseCSV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#9579#14231#0" expanded="true" />
+            <element signature="e#12818#13173#0" expanded="true" />
+            <element signature="e#13172#13173#0" expanded="true" />
+            <element signature="e#14230#14231#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/test/java/org/apache/nifi/processors/ParseCSV/ParseCSVTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="25" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/main/java/org/apache/nifi/processors/ParseCSV/ParseCSV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#9579#14231#0" expanded="true" />
+            <element signature="e#12818#13173#0" expanded="true" />
+            <element signature="e#13172#13173#0" expanded="true" />
+            <element signature="e#14230#14231#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/main/java/org/apache/nifi/processors/ParseCSV/ParseCSV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+          <folding>
+            <element signature="e#9579#14231#0" expanded="true" />
+            <element signature="e#12818#13173#0" expanded="true" />
+            <element signature="e#13172#13173#0" expanded="true" />
+            <element signature="e#14230#14231#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/test/java/org/apache/nifi/processors/ParseCSV/ParseCSVTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/main/java/org/apache/nifi/processors/ParseCSV/ParseCSV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#9579#14231#0" expanded="true" />
+            <element signature="e#12818#13173#0" expanded="true" />
+            <element signature="e#13172#13173#0" expanded="true" />
+            <element signature="e#14230#14231#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -743,9 +928,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7858#10285#0" expanded="true" />
-            <element signature="e#10284#10285#0" expanded="true" />
+            <element signature="e#9579#14231#0" expanded="true" />
+            <element signature="e#12818#13173#0" expanded="true" />
+            <element signature="e#13172#13173#0" expanded="true" />
+            <element signature="e#14230#14231#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -763,9 +949,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7858#10285#0" expanded="true" />
-            <element signature="e#10284#10285#0" expanded="true" />
+            <element signature="e#9579#14231#0" expanded="true" />
+            <element signature="e#12818#13173#0" expanded="true" />
+            <element signature="e#13172#13173#0" expanded="true" />
+            <element signature="e#14230#14231#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -783,9 +970,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7858#10285#0" expanded="true" />
-            <element signature="e#10284#10285#0" expanded="true" />
+            <element signature="e#9579#14231#0" expanded="true" />
+            <element signature="e#12818#13173#0" expanded="true" />
+            <element signature="e#13172#13173#0" expanded="true" />
+            <element signature="e#14230#14231#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -803,25 +991,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7858#10285#0" expanded="true" />
-            <element signature="e#10284#10285#0" expanded="true" />
+            <element signature="e#9579#14231#0" expanded="true" />
+            <element signature="e#12818#13173#0" expanded="true" />
+            <element signature="e#13172#13173#0" expanded="true" />
+            <element signature="e#14230#14231#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-bundle.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16528925">
-          <caret line="8" column="61" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="6.7083335">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -839,19 +1013,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7256098">
-          <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/nifi/nifi-mock/0.4.1/nifi-mock-0.4.1.jar!/org/apache/nifi/util/StandardProcessorTestRunner.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8848614">
           <caret line="743" column="0" selection-start-line="743" selection-start-column="0" selection-end-line="743" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -859,6 +1024,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5117271">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.041667">
+          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-bundle.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21466905">
+          <caret line="8" column="61" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19626169">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -866,19 +1054,20 @@
     <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/test/java/org/apache/nifi/processors/ParseCSV/ParseCSVTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="58" selection-start-line="44" selection-start-column="58" selection-end-line="44" selection-end-column="58" />
+          <caret line="48" column="68" selection-start-line="48" selection-start-column="68" selection-end-line="48" selection-end-column="68" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nifi-ParseCSV-processors/src/main/java/org/apache/nifi/processors/ParseCSV/ParseCSV.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.70552146">
-          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+        <state vertical-scroll-proportion="-0.23901099">
+          <caret line="274" column="36" selection-start-line="274" selection-start-column="36" selection-end-line="274" selection-end-column="36" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7858#10285#0" expanded="true" />
-            <element signature="e#10284#10285#0" expanded="true" />
+            <element signature="e#9579#14231#0" expanded="true" />
+            <element signature="e#12818#13173#0" expanded="true" />
+            <element signature="e#13172#13173#0" expanded="true" />
+            <element signature="e#14230#14231#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -942,6 +1131,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -965,7 +1155,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.37878788" />
               </list>
             </option>
           </splitter-proportions>
