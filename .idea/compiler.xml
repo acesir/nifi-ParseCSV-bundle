@@ -34,7 +34,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="nifi-ParseCSV-bundle" target="1.7" />
-      <module name="nifi-ParseCSV-nar" target="1.7" />
+      <module name="nifi-ParseCSV-nar" target="1.5" />
       <module name="nifi-ParseCSV-processors" target="1.7" />
     </bytecodeTargetLevel>
   </component>

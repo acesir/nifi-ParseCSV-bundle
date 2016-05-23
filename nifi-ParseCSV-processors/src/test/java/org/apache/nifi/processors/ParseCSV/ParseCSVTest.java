@@ -44,11 +44,14 @@ public class ParseCSVTest {
             runner.setProperty(ParseCSV.DELIMITER, ",");
             runner.setProperty(ParseCSV.WITH_HEADER, "True");
             runner.setProperty(ParseCSV.FORMAT, "DEFAULT");
-            //runner.setProperty(ParseCSV.CUSTOM_HEADER, "column4,column5,column6");
-            runner.setProperty(ParseCSV.COLUMN_MASK, "RNC");
-            //runner.setProperty(ParseCSV.COLUMN_TOKENIZE, "RNC");
-            runner.setProperty(ParseCSV.COLUMN_ENCRYPT, "SITE_ID");
-            runner.enqueue(Paths.get("/Users/acesir/Desktop/files/scotia/NiFi/DB_data.csv"));
+            runner.setProperty(ParseCSV.OUTPUT_FORMAT, "JSON");
+            //runner.setProperty(ParseCSV.CUSTOM_HEADER, "CELL_ID,SITE_ID,START_TIME,END_TIME,CELL_DOWN_TIME,TECH_TYPE,RNC,IS_PLATINUM");
+            //runner.setProperty(ParseCSV.COLUMN_MASK, "SITE_ID");
+            //runner.setProperty(ParseCSV.COLUMN_TOKENIZE, "SITE_ID");
+            //runner.setProperty(ParseCSV.COLUMN_ENCRYPT, "RNC");
+            //runner.setProperty(ParseCSV.TOKENIZE_UNQIUE_IDENTIFIER, "CELL_ID");
+            //runner.setProperty(ParseCSV.TOKENIZED_OUTPUT, "JSON");
+            runner.enqueue(Paths.get("/Users/acesir/Desktop/files/rogers.csv"));
             runner.run();
 
             //runner.assertAllFlowFilesTransferred(ParseCSV.RELATIONSHIP_SUCCESS);
@@ -58,13 +61,13 @@ public class ParseCSVTest {
             runner.assertTransferCount(ParseCSV.RELATIONSHIP_TOKENIZED, 1);
 
             final MockFlowFile out = runner.getFlowFilesForRelationship(ParseCSV.RELATIONSHIP_SUCCESS).get(0);
-            //final MockFlowFile out2 = runner.getFlowFilesForRelationship(ParseCSV.RELATIONSHIP_TOKENIZED).get(0);
-            out.assertContentEquals(new String(Files.readAllBytes(Paths.get("/Users/acesir/Desktop/files/scotia/NiFi/DB_data.csv"))));
-            //out2.assertContentEquals(new String(Files.readAllBytes(Paths.get("/Users/acesir/Desktop/files/scotia/NiFi/DB_data.csv"))));
+            out.assertContentEquals(new String(Files.readAllBytes(Paths.get("/Users/acesir/Desktop/files/rogers.csv"))));
+
+            //final MockFlowFile tokenized = runner.getFlowFilesForRelationship(ParseCSV.RELATIONSHIP_TOKENIZED).get(0);
+            //tokenized.assertContentEquals(new String(Files.readAllBytes(Paths.get("/Users/acesir/Desktop/files/scotia/NiFi/DB_data.csv"))));
         }
         catch (Exception ex) {
             System.out.println(ex);
         }
     }
-
 }

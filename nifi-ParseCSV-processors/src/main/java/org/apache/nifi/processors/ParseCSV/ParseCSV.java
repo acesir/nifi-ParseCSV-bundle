@@ -15,6 +15,13 @@
  * limitations under the License.
  */
 package org.apache.nifi.processors.ParseCSV;
+import com.fasterxml.jackson.core.PrettyPrinter;
+import com.fasterxml.jackson.databind.MappingIterator;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.csv.CsvMapper;
+import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.util.DefaultXmlPrettyPrinter;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -44,8 +51,9 @@ import java.security.Key;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.List;
 
-@Tags({"example"})
+@Tags({"csv", "parse", "masking", "mask", "tokenize", "encrypt"})
 @CapabilityDescription("Provide a description")
 @SeeAlso({})
 @ReadsAttributes({@ReadsAttribute(attribute="", description="")})
@@ -85,7 +93,7 @@ public class ParseCSV extends AbstractProcessor {
             .build();
 
     public static final PropertyDescriptor DELIMITER = new PropertyDescriptor
-            .Builder().name("Delimiter")
+            .Builder().name("File Delimiter")
             .description("Example Property")
             .required(true)
             .defaultValue(",")
@@ -98,6 +106,14 @@ public class ParseCSV extends AbstractProcessor {
             .required(true)
             .defaultValue("True")
             .allowableValues("True", "False")
+            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+            .build();
+    public static final PropertyDescriptor OUTPUT_FORMAT = new PropertyDescriptor
+            .Builder().name("Standard Output Format")
+            .description("")
+            .required(false)
+            .defaultValue("CSV")
+            .allowableValues("CSV", "JSON", "XML")
             .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
             .build();
 
@@ -133,6 +149,24 @@ public class ParseCSV extends AbstractProcessor {
             .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
             .build();
 
+    public static final PropertyDescriptor TOKENIZE_UNQIUE_IDENTIFIER = new PropertyDescriptor
+            .Builder().name("Tokenized Unique Identifier")
+            .description("Use existing CSV column or RowNumber to extract record number as " +
+                    "identifier as part of tokenization for mask and source data")
+            .required(false)
+            .defaultValue(null)
+            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+            .build();
+
+    public static final PropertyDescriptor TOKENIZED_OUTPUT = new PropertyDescriptor
+            .Builder().name("Tokenized Output Format")
+            .description("Store of where the tokenized source, mask and unique identifier values will be persisted.")
+            .required(false)
+            .defaultValue("APACHE PHOENIX")
+            .allowableValues("APACHE PHOENIX", "MYSQL", "ORACLE", "MS SQL SERVER", "JSON", "XML", "CSV")
+            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+            .build();
+
     public static final Relationship RELATIONSHIP_SUCCESS = new Relationship.Builder()
             .name("success")
             .description("success")
@@ -157,10 +191,13 @@ public class ParseCSV extends AbstractProcessor {
         descriptors.add(CREATE_ATTRIBUTES);
         descriptors.add(DELIMITER);
         descriptors.add(WITH_HEADER);
+        descriptors.add(OUTPUT_FORMAT);
         descriptors.add(CUSTOM_HEADER);
         descriptors.add(COLUMN_MASK);
         descriptors.add(COLUMN_ENCRYPT);
         descriptors.add(COLUMN_TOKENIZE);
+        descriptors.add(TOKENIZE_UNQIUE_IDENTIFIER);
+        descriptors.add(TOKENIZED_OUTPUT);
         this.descriptors = Collections.unmodifiableList(descriptors);
 
         final Set<Relationship> relationships = new HashSet<Relationship>();
@@ -198,12 +235,16 @@ public class ParseCSV extends AbstractProcessor {
         final boolean create_attributes = Boolean.parseBoolean(context.getProperty(CREATE_ATTRIBUTES).getValue());
         final char delimiter = context.getProperty(DELIMITER).getValue().charAt(0);
         final boolean with_header = Boolean.parseBoolean(context.getProperty(WITH_HEADER).getValue());
+        final String output_format = context.getProperty(OUTPUT_FORMAT).getValue();
         final String custom_header = context.getProperty(CUSTOM_HEADER).getValue();
         final String column_mask = context.getProperty(COLUMN_MASK).getValue();
         final String column_encrypt = context.getProperty(COLUMN_ENCRYPT).getValue();
         final String column_tokenize = context.getProperty(COLUMN_TOKENIZE).getValue();
+        final String tokenize_unique_identifier = context.getProperty(TOKENIZE_UNQIUE_IDENTIFIER).getValue();
+        final String tokenized_ouput = context.getProperty(TOKENIZED_OUTPUT).getValue();
         final String encryptionKey = "Bar12345Bar12345";
-        // new flowfile ehre
+
+        // new flowfile here
         final org.apache.nifi.util.ObjectHolder<FlowFile> holder = new org.apache.nifi.util.ObjectHolder<>(null);
 
         flowFile = session.write(flowFile, new StreamCallback() {
@@ -213,8 +254,7 @@ public class ParseCSV extends AbstractProcessor {
                 CSVFormat csvFormat = buildFormat(format, delimiter, with_header, custom_header);
                 CSVParser csvParser = new CSVParser(new InputStreamReader(inputStream, charset), csvFormat);
                 CSVPrinter csvPrinter = new CSVPrinter(new OutputStreamWriter(outputStream, charset), csvFormat);
-
-                String[] headerArray = csvParser.getHeaderMap().keySet().toArray(new String[0]);
+                String headerArray[];
 
                 ArrayList<String> columnMaskList = new ArrayList<>();
                 ArrayList<String> columnEncryptList = new ArrayList<String>();
@@ -224,32 +264,42 @@ public class ParseCSV extends AbstractProcessor {
                 FlowFile tokenized = session.create();
 
                 // print header if needed
-                csvPrinter.printRecord(headerArray);
+                if (custom_header != null && output_format.equals("CSV")) {
+                    csvPrinter.printRecord(custom_header);
+                    headerArray = custom_header.split(",");
+                }
+                else {
+                    headerArray = csvParser.getHeaderMap().keySet().toArray(new String[0]);
+                    //csvPrinter.printRecord(headerArray);
+                }
 
                 if (column_mask != null) {
-                    columnMaskList = new ArrayList<>(Arrays.asList(column_mask.split(",")));
+                    columnMaskList =
+                            new ArrayList<>(Arrays.asList(column_mask.replace("\"","").split(",")));
                 }
 
                 if (column_encrypt != null) {
-                    columnEncryptList = new ArrayList<>(Arrays.asList(column_encrypt.split(",")));
+                    columnEncryptList =
+                            new ArrayList<>(Arrays.asList(column_encrypt.split(",")));
                 }
 
                 if (column_tokenize != null) {
-                    columnTokenizeList = new ArrayList<>(Arrays.asList(column_tokenize.split(",")));
+                    columnTokenizeList =
+                            new ArrayList<>(Arrays.asList(column_tokenize.split(",")));
                 }
 
                 // loop through records and print
                 for (final CSVRecord record : csvParser) {
 
                     // generate attributes if required per record
-                    //if (create_attributes) {
-                    //    for (int i = 0; i < headerArray.length; i++) {
-                    //        attributes.put(headerArray[i] + "." + record.getRecordNumber(), record.get(i));
-                    //    }
-                    //}
-
+                    if (create_attributes) {
+                        for (int i = 0; i < headerArray.length; i++) {
+                            attributes.put(headerArray[i], record.get(i));
+                            //attributes.put(headerArray[i] + "." + record.getRecordNumber(), record.get(i));
+                        }
+                    }
                     // check masked columns
-                    if (columnMaskList != null || column_encrypt != null) {
+                    if (column_mask != null || column_encrypt != null) {
                         // we have to loop through the header array and match user requested mask columns
                         for (int i = 0; i < headerArray.length; i++) {
                             //System.out.println(headerArray[i] + "." + record.getRecordNumber() + " - " + mask(record.get(i)));
@@ -261,10 +311,9 @@ public class ParseCSV extends AbstractProcessor {
                                 // construct tokenization row for external DB store
                                 if (columnTokenizeList.contains(headerArray[i])) {
                                     final String tokenizedRow;
-                                    tokenizedRow = "values ('" + headerArray[i] + "'" + "," +
-                                            "'" + record.getRecordNumber() + "'" + "," +
-                                            "'" + mask(record.get(i)) + "'" + "," +
-                                            "'" + record.get(i) + "')" + "\r\n";
+                                    tokenizedRow = tokenizationOut(tokenized_ouput, headerArray[i],
+                                            tokenize_unique_identifier,mask(record.get(i)),record.get(i),
+                                            Long.toString(record.getRecordNumber()));
 
                                     tokenized = session.append(tokenized, new OutputStreamCallback() {
                                         @Override
@@ -289,7 +338,21 @@ public class ParseCSV extends AbstractProcessor {
                     }
                     else {
                         // no masking or encryption required, print record
-                        csvPrinter.printRecord(record);
+                        switch (output_format) {
+                            case "CSV":
+                                csvPrinter.printRecord(record);
+                                break;
+                            case "JSON":
+                                String json = new ObjectMapper().writer().withDefaultPrettyPrinter().
+                                        writeValueAsString(record.toMap()) + "\n";
+                                if (json.length() > 0) {
+                                    outputStream.write(json.getBytes());
+                                }
+                                break;
+                            case "XML":
+                                outputStream.write(new XmlMapper().writeValueAsString(record.toMap()).getBytes());
+                                break;
+                        }
                     }
                 }
                 csvPrinter.flush();
@@ -325,6 +388,36 @@ public class ParseCSV extends AbstractProcessor {
         return Base64.encodeBase64(returnEncrypted);
     }
 
+    private String tokenizationOut (String store, String columnName, String uniqueIdentifier, String maskedValue, String sourceValue, String rowNumber) {
+        String storeOutput = null;
+
+        switch (store) {
+            case "APACHE PHOENIX":
+                storeOutput = "values ('" + columnName + "'" + "," +
+                        "'" + (uniqueIdentifier.equals("RowNumber()") ?
+                        rowNumber : uniqueIdentifier) + "'" + "," +
+                        "'" + maskedValue + "'" + "," +
+                        "'" + sourceValue + "')" + "\r\n";
+                break;
+            case "MySQL":
+                storeOutput = "values ('" + columnName + "'" + "," +
+                        "'" + (uniqueIdentifier.equals("RowNumber()") ?
+                        rowNumber : uniqueIdentifier) + "'" + "," +
+                        "'" + maskedValue + "'" + "," +
+                        "'" + sourceValue + "')" + "\r\n";
+                break;
+            case "JSON":
+                storeOutput = "{\"ColumnName\": " + "\"" + columnName + "\"," +
+                        "\"UniqueIdentifier\": " + "\"" + (uniqueIdentifier.equals("RowNumber()") ?
+                        rowNumber : uniqueIdentifier) + "\"," +
+                        "\"MaskedValue\": " + "\"" + maskedValue + "\"," +
+                        "\"SourceValue\": " + "\"" + sourceValue + "\"}" + "\r\n";
+                break;
+        }
+
+        return storeOutput;
+    }
+
     private CSVFormat buildFormat(String format, char delimiter, Boolean with_header, String custom_header) {
         CSVFormat csvFormat = null;
 
@@ -337,7 +430,8 @@ public class ParseCSV extends AbstractProcessor {
 
 
         if (with_header & custom_header != null) {
-            csvFormat = csvFormat.withHeader(custom_header).withSkipHeaderRecord();
+            csvFormat = csvFormat.withSkipHeaderRecord(true);
+            csvFormat = csvFormat.withHeader(custom_header);
         } else if (with_header & custom_header == null) {
             csvFormat = csvFormat.withHeader();
         }
@@ -354,9 +448,10 @@ public class ParseCSV extends AbstractProcessor {
         final String vowel = "aeiouy";
         final String digit = "0123456789";
 
-        DateFormat dateFormat = new SimpleDateFormat("SSS");
+        DateFormat dateFormat = new SimpleDateFormat("ssSSS");
         Date date = new Date();
-        Random r = new Random(Integer.parseInt(dateFormat.format(date)));
+        Random ran = new Random();
+        Random r = new Random(Integer.parseInt(dateFormat.format(date) + ran.nextInt(1000)));
 
         char data[] = str.toCharArray();
 
