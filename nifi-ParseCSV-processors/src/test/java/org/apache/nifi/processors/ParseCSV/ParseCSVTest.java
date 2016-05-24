@@ -51,7 +51,7 @@ public class ParseCSVTest {
             //runner.setProperty(ParseCSV.COLUMN_ENCRYPT, "RNC");
             //runner.setProperty(ParseCSV.TOKENIZE_UNQIUE_IDENTIFIER, "CELL_ID");
             //runner.setProperty(ParseCSV.TOKENIZED_OUTPUT, "JSON");
-            runner.enqueue(Paths.get("/Users/acesir/Desktop/files/rogers.csv"));
+            runner.enqueue(Paths.get("/Users/acesir/Desktop/stuff/files/rogers.csv"));
             runner.run();
 
             //runner.assertAllFlowFilesTransferred(ParseCSV.RELATIONSHIP_SUCCESS);
@@ -61,7 +61,7 @@ public class ParseCSVTest {
             runner.assertTransferCount(ParseCSV.RELATIONSHIP_TOKENIZED, 1);
 
             final MockFlowFile out = runner.getFlowFilesForRelationship(ParseCSV.RELATIONSHIP_SUCCESS).get(0);
-            out.assertContentEquals(new String(Files.readAllBytes(Paths.get("/Users/acesir/Desktop/files/rogers.csv"))));
+            out.assertContentEquals(new String(Files.readAllBytes(Paths.get("/Users/acesir/Desktop/stuff/files/rogers.csv"))));
 
             //final MockFlowFile tokenized = runner.getFlowFilesForRelationship(ParseCSV.RELATIONSHIP_TOKENIZED).get(0);
             //tokenized.assertContentEquals(new String(Files.readAllBytes(Paths.get("/Users/acesir/Desktop/files/scotia/NiFi/DB_data.csv"))));

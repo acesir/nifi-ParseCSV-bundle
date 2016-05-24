@@ -270,7 +270,7 @@ public class ParseCSV extends AbstractProcessor {
                 }
                 else {
                     headerArray = csvParser.getHeaderMap().keySet().toArray(new String[0]);
-                    //csvPrinter.printRecord(headerArray);
+                    csvPrinter.printRecord(headerArray);
                 }
 
                 if (column_mask != null) {
@@ -294,8 +294,8 @@ public class ParseCSV extends AbstractProcessor {
                     // generate attributes if required per record
                     if (create_attributes) {
                         for (int i = 0; i < headerArray.length; i++) {
-                            attributes.put(headerArray[i], record.get(i));
-                            //attributes.put(headerArray[i] + "." + record.getRecordNumber(), record.get(i));
+                            //attributes.put(headerArray[i], record.get(i));
+                            attributes.put(headerArray[i] + "." + record.getRecordNumber(), record.get(i));
                         }
                     }
                     // check masked columns
@@ -348,6 +348,10 @@ public class ParseCSV extends AbstractProcessor {
                                 if (json.length() > 0) {
                                     outputStream.write(json.getBytes());
                                 }
+
+                                //List<Map<?, ?>> data = readObjectsFromCsv(inputStream);
+                                //String adis = writeAsJson(data);
+                                //outputStream.write(writeAsJson(data).getBytes());
                                 break;
                             case "XML":
                                 outputStream.write(new XmlMapper().writeValueAsString(record.toMap()).getBytes());
@@ -386,6 +390,20 @@ public class ParseCSV extends AbstractProcessor {
             e.printStackTrace();
         }
         return Base64.encodeBase64(returnEncrypted);
+    }
+
+    public static List<Map<?, ?>> readObjectsFromCsv(InputStream is) throws IOException {
+        CsvSchema bootstrap = CsvSchema.emptySchema().withHeader();
+        CsvMapper csvMapper = new CsvMapper();
+        MappingIterator<Map<?, ?>> mappingIterator = csvMapper.reader(Map.class).with(bootstrap).readValues(is);
+
+        return mappingIterator.readAll();
+    }
+
+    public static String writeAsJson(List<Map<?, ?>> data) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        //mapper.writeValue(file, data);
+        return mapper.writer().withDefaultPrettyPrinter().writeValueAsString(data);
     }
 
     private String tokenizationOut (String store, String columnName, String uniqueIdentifier, String maskedValue, String sourceValue, String rowNumber) {
