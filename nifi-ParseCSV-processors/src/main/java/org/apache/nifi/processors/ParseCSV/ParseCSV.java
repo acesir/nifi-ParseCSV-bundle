@@ -45,6 +45,7 @@ import org.apache.nifi.processor.io.StreamCallback;
 import org.apache.nifi.processor.util.StandardValidators;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.security.Key;
@@ -106,6 +107,13 @@ public class ParseCSV extends AbstractProcessor {
             .required(true)
             .defaultValue("True")
             .allowableValues("True", "False")
+            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+            .build();
+    public static final PropertyDescriptor STATIC_SCHEMA = new PropertyDescriptor
+            .Builder().name("Static Schema")
+            .description("Example Property")
+            .required(false)
+            .defaultValue("True")
             .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
             .build();
     public static final PropertyDescriptor OUTPUT_FORMAT = new PropertyDescriptor
@@ -191,6 +199,7 @@ public class ParseCSV extends AbstractProcessor {
         descriptors.add(CREATE_ATTRIBUTES);
         descriptors.add(DELIMITER);
         descriptors.add(WITH_HEADER);
+        descriptors.add(STATIC_SCHEMA);
         descriptors.add(OUTPUT_FORMAT);
         descriptors.add(CUSTOM_HEADER);
         descriptors.add(COLUMN_MASK);
@@ -243,6 +252,7 @@ public class ParseCSV extends AbstractProcessor {
         final String tokenize_unique_identifier = context.getProperty(TOKENIZE_UNQIUE_IDENTIFIER).getValue();
         final String tokenized_ouput = context.getProperty(TOKENIZED_OUTPUT).getValue();
         final String encryptionKey = "Bar12345Bar12345";
+        final String static_schema = context.getProperty(STATIC_SCHEMA).getValue();
 
         // new flowfile here
         final org.apache.nifi.util.ObjectHolder<FlowFile> holder = new org.apache.nifi.util.ObjectHolder<>(null);
@@ -264,9 +274,14 @@ public class ParseCSV extends AbstractProcessor {
                 FlowFile tokenized = session.create();
 
                 // print header if needed
-                if (custom_header != null && output_format.equals("CSV")) {
+                if (custom_header != null && output_format.equals("CSV") && static_schema == null) {
                     csvPrinter.printRecord(custom_header);
                     headerArray = custom_header.split(",");
+                }
+                else if (static_schema != null && custom_header == null)
+                {
+                    csvPrinter.printRecord(static_schema.replace("\"",""));
+                    headerArray = static_schema.split(",");
                 }
                 else {
                     headerArray = csvParser.getHeaderMap().keySet().toArray(new String[0]);
@@ -291,6 +306,12 @@ public class ParseCSV extends AbstractProcessor {
                 // loop through records and print
                 for (final CSVRecord record : csvParser) {
 
+                    Map<String, String> k = record.toMap();
+
+                    for (Map.Entry<String,String> konj: k.entrySet())
+                    {
+                        //System.out.println(konj.getValue());
+                    }
                     // generate attributes if required per record
                     if (create_attributes) {
                         for (int i = 0; i < headerArray.length; i++) {
@@ -340,7 +361,21 @@ public class ParseCSV extends AbstractProcessor {
                         // no masking or encryption required, print record
                         switch (output_format) {
                             case "CSV":
-                                csvPrinter.printRecord(record);
+                                //csvPrinter.printRecord(record);
+                                List<String> items = Arrays.asList(static_schema.split(","));
+                                String lastColumn = items.get(items.size() - 1);
+                                String test = "";
+                                for (String item: items)
+                                {
+                                    if (item != lastColumn) {
+                                        test += record.get(item) + ",";
+                                    }
+                                    else {
+                                        test += record.get(item);
+                                    }
+                                }
+
+                                csvPrinter.printRecord(test.replace("^\"|\"$", ""));
                                 break;
                             case "JSON":
                                 String json = new ObjectMapper().writer().withDefaultPrettyPrinter().
